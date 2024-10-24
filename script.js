@@ -23,9 +23,9 @@ const chart = new Chart(barCtx, {
         labels: ['Number'],
         datasets: [{
             label: 'Sales',
-            data: [0], 
-            backgroundColor: 'rgba(153, 102, 255, 0.6)',
-            borderColor: 'rgba(153, 102, 255, 1)',
+            data: [0],
+            backgroundColor: 'rgba(54, 162, 235, 0.7)', 
+            borderColor: 'rgba(54, 162, 235, 1)', 
             borderWidth: 1,
             barThickness: 40 
         }]
@@ -35,14 +35,19 @@ const chart = new Chart(barCtx, {
         plugins: {
             title: {
                 display: true,
-                text: 'Bar Chart'
-            }
+                text: 'Bar Chart',
+                font :{
+                    size: 18,
+                    weight: 'bold'
+                },
+                color: '#333'
+            },
         },
         scales: {
             y: {
                 beginAtZero: true,
-                min: 0, 
-                max: 10, 
+                min: 0,
+                max: 10,
                 ticks: {
                     stepSize: 1 
                 }
@@ -51,16 +56,25 @@ const chart = new Chart(barCtx, {
     }
 });
 
+
 const areaChart = document.getElementById('areaChart').getContext('2d');
+const gradientFill = areaChart.createLinearGradient(0, 0, 0, 400);
+gradientFill.addColorStop(0, 'rgba(75, 192, 192, 0.4)');
+gradientFill.addColorStop(1, 'rgba(153, 102, 255, 0.2)');
+
 const chart2 = new Chart(areaChart, {
     type: 'line',
     data: {
-        labels: [],
+        labels: [], 
         datasets: [{
             label: 'Dataset',
             data: [],
+            backgroundColor: gradientFill,
             borderColor: 'rgba(75, 192, 192, 1)',
-            fill: false
+            pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+            pointBorderColor: '#fff',
+            fill: true,
+            tension: 0.4
         }]
     },
     options: {
@@ -68,12 +82,21 @@ const chart2 = new Chart(areaChart, {
         plugins: {
             title: {
                 display: true,
-                text: 'Area Chart'
+                text: 'Area Chart',
+                font: {
+                    size: 18,
+                    weight: 'bold'
+                },
+                color: '#333'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
             }
         }
     }
 });
-
 const socket = io('https://data.gdscnsut.com');
 
 socket.on('random_number', (randomNum) => {
@@ -83,6 +106,10 @@ socket.on('random_number', (randomNum) => {
     chart2.data.datasets[0].data.push(randomNum.number); 
     const time = new Date();
     chart2.data.labels.push(time.toLocaleTimeString()); 
+    if (chart2.data.labels.length > 50) {
+        chart2.data.labels.shift();
+        chart2.data.datasets[0].data.shift();
+      }
     chart2.update(); 
     chart.update();
 });
