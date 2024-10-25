@@ -77,37 +77,27 @@
 
   <main class="flex-1 p-4 sm:p-6">
 
-
       <header class="text-center mb-6">
         <h1 class="text-4xl font-bold text-gray-900 drop-shadow-md">
-          Live Data Visualization with Pusher & Chart.js
+          Real-time and Projected Data Visualization
         </h1>
-        <p class="text-lg text-gray-600 mt-2">Real-time updates and smooth transitions</p>
+        <p class="text-lg text-gray-600 mt-2">Real-time and projected data with smooth updates</p>
       </header>
-      <div class="flex justify-center items-center h-full">
-        <p class="font-semibold text-center bg-white shadow-lg rounded-md py-2 px-6 text-2xl">
-            Stats Values: 
-             <span id="statValue" class="font-bold text-blue-600 ml-2"> </span>
-        </p>
-    </div>
-
-      <div class="charts grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
-        <div class="bg-gray-50 p-4 rounded shadow-xl">
-          <h2 class="font-semibold text-xl mb-4">Sales Data(Bar Chart)</h2>
-          <canvas id="barChart" class="w-full h-64"></canvas>
-        </div>
-
-        <div class="bg-gray-50 p-8 rounded-lg shadow-xl max-w-4xl mx-auto">
+      
+      <div class="flex flex-wrap justify-center gap-8">
+        <div class="bg-gray-50 p-8 rounded-lg shadow-xl max-w-2xl">
           <canvas id="liveChart" class="w-full h-64"></canvas>
         </div>
 
-
+        <div class="bg-gray-50 p-8 rounded-lg shadow-xl max-w-2xl">
+          <canvas id="projectedChart" class="w-full h-64"></canvas>
+        </div>
       </div>
 
-      
+  </main>
 
-      <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-      <script src="app.js"></script>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
