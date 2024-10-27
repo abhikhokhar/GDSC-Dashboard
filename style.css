@@ -1,0 +1,28 @@
+#barChart {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hidden-sidebar {
+    transform: translateX(-100%);
+}
+
+.visible-sidebar {
+    transform: translateX(0);
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: none;
+}
+
+.backdrop.visible {
+    display: block;
+}
