@@ -26,7 +26,9 @@ channel.bind('my-event', function (data) {
 });
 
 const liveCtx = document.getElementById('liveChart').getContext('2d');
+const saleData = document.getElementById("randomNumber");
 const projectedCtx = document.getElementById('projectedChart').getContext('2d');
+const projectedData = document.getElementById("projectedNumber");
 
 const liveChart = createChart(liveCtx, 'Live Data');
 const projectedChart = createChart(projectedCtx, 'Projected Data');
@@ -75,11 +77,12 @@ function updateChart(chart, value) {
 
 setInterval(() => {
   const simulatedValue = Math.floor(Math.random() * 100);
-  console.log(simulatedValue);
+  saleData.innerHTML = simulatedValue;
   updateChart(liveChart, simulatedValue);
-}, 3000);
+}, 2000);
 
 setInterval(() => {
   const simulatedValue = Math.floor(Math.random() * 100);
+  projectedData.innerHTML = simulatedValue;
   updateChart(projectedChart, simulatedValue);
 }, 4000);
