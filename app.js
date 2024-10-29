@@ -14,17 +14,6 @@ backdrop.addEventListener('click', () => {
   backdrop.classList.remove('visible');
 });
 
-const pusher = new Pusher('e1873c90abc55b055f38', {
-  cluster: 'ap2',
-  encrypted: true
-});
-
-const channel = pusher.subscribe('my-channel');
-
-channel.bind('my-event', function (data) {
-  updateChart(liveChart, data.value);
-});
-
 const liveCtx = document.getElementById('liveChart').getContext('2d');
 const saleData = document.getElementById("randomNumber");
 const projectedCtx = document.getElementById('projectedChart').getContext('2d');
